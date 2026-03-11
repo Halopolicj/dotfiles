@@ -1,0 +1,89 @@
+{
+    "spacing": 10,
+    "layer": "bottom",
+    "height": 30,
+    "margin-bottom": 6,
+    "modules-left": [
+        "hyprland/workspaces",
+        "sway/mode",
+        "battery"
+    ],
+    "modules-center": [
+        "clock",
+        "backlight/slider"
+    ],
+    "modules-right": [
+        "pulseaudio/slider",
+        "network"
+],
+    "backlight/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal",
+        "device": "amdgpu_bl2"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+        },
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "clock": {
+        "format": "{:%a, %d. %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "left",
+            "format": {
+                "months":   "<span color='#ff8c9d'><b>{}</b></span>",
+                "days":     "<span color='#ff9494'><b>{}</b></span>",
+                "weeks":    "<span color='#941c1c'><b>{}</b></span>",
+                "weekdays": "<span color='#b30000'><b>{}</b></span>",
+                "today":    "<span color='#53a6c9'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "network": {
+        "interface": "wlo1",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+        "format-disconnected": "", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 5, // 5 workspaces by default on every monitor
+            "HDMI-A-1": 3 // but only three on HDMI-A-1
+        }
+    }
+}
