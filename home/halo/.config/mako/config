@@ -1,2 +1,7 @@
+background-color=#64727D
+default-timeout=5000
+layer=overlay
+anchor=bottom-right
+
 [app-name="Spotify"]
 invisible=1
