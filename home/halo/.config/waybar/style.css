@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "SF Pro Disply", "JetBrainsMono Nerd Font Propo";
-    font-size: 13px;
+    font-family: "SF Pro Disply", "JetBrainsMono NF";
+    font-size: 14px;
     min-height: 0;
     margin: 0;
     padding: 0;
@@ -10,112 +10,117 @@
 }
 
 window#waybar {
-    background: transparent;
-    border-bottom: 2px solid rgb(192, 0, 16);
+    /*border-bottom: 2px solid rgb(192, 0, 16);*/
     color: #8ff9ff;
+    /*transition-property: background-color;
+    transition-duration: 0.5s;*/
 }
 
-.modules-left {
-    border: 1px solid #fccccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
+tooltip {
+    background-color: rgba(41, 44, 46, 0.7);
+    border-radius: 13px;
+    padding: 1rem;
 
-#workspaces {
-    transition: all 100ms ease-in-out;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background: rgba(182, 20, 20, 0.397);
+    padding: 0.3rem 1rem;
+    margin: 0.3rem 0.25rem;
+    border-radius: 12px;
+    border: 1.5px solid rgba(169, 254, 255, 0.5);
+    background-color: rgba(169, 254, 255, 0.25);
     color: #8ff9ff;
-    border-bottom: 3px solid transparent;
+    transition-property: min-width;
+    transition-duration: 100ms;
+    box-shadow: none;
+    text-shadow: none;
+
+    animation: smoothShit 2s ease-in infinite;
+    transition: all 0.5s cubic-bezier(0.38, 0, 0.22, 1.39);
+}
+#workspaces button:hover {
+    background: rgba(169, 254, 255, 0.4);
 }
 
 #workspaces button.active {
     min-width: 50px;
-    color: #8ff9ff;
-    background: #fccccc;
+    background: rgba(169, 254, 255, 0.6);
 }
 
-#workspaces button.focused {
-    background: #64727D;
-    border-top: 3px solid white;
+
+#battery {
+    background-color: rgba(114, 222, 78, 0.25);
+    color: #98ff8f;
+    border: 1.5px solid rgba(114, 222, 78, 0.5);
+    padding: 0.3rem 0.5rem;
+    margin: 0.3rem 0.25rem;
+    border-radius: 12px;
+    min-width: 70px;
 }
 
-#mode, #clock, #battery {
-    padding: 0 10px;
-}
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+#battery.charging {
+    background-color: rgba(114, 222, 78, 0.3);
 }
 
 #clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #470000;
-    color: #8ff9ff;
-}
-
-#battery.charging {
-    color: #fccccc;
-    background-color: #8ff9ff;
-}
-
-#pulseaudio-slider {
-    padding: 0;
-    margin: 0;
+    border: 1.5px solid rgba(252, 204, 204, 0.5);
+    background-color: rgba(252, 204, 204, 0.25);
+    color: rgb(255, 148, 148);
+    border-radius: 12px;
+    padding: 0.3rem 0.5rem;
+    margin: 0.3rem 0.25rem;
 }
 #pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
     opacity: 0;
     background-image: none;
-    border: none;
     box-shadow: none;
+    min-height: 0px;
+    min-width: 0px;
 }
 #pulseaudio-slider trough {
-    min-height: 10px;
     min-width: 80px;
-    border-radius: 5px;
-    background: black;
+    min-height: 13px;
+    border-radius: 7px;
+    border: 1.5px solid rgba(169, 254, 255, 0.7);
+    background: rgba(51, 55, 55, 0.5);
 }
 #pulseaudio-slider highlight {
-    min-width: 3px;
+    min-width: 1px;
     border-radius: 5px;
-    background: green;
+    background: rgba(169, 254, 255, 0.5);
 }
 
 /*backlight*/
+
+#backlight {
+    color: rgb(255, 148, 148);
+}
 
 #backlight-slider slider {
     min-height: 0px;
     min-width: 0px;
     opacity: 0;
     background-image: none;
-    border: none;
     box-shadow: none;
     background: none;
 }
 #backlight-slider trough {
-    min-height: 10px;
+    min-height: 13px;
     min-width: 80px;
-    border-radius: 5px;
-    background: gray;
+    border-radius: 7px;
+    border: 1.5px solid rgba(252, 204, 204, 0.5);
+    background: rgba(51, 55, 55, 0.5);
 }
 #backlight-slider highlight {
-    min-width: 3px;
+    min-width: 1px;
     border-radius: 5px;
-    background: #8ff9ff;
+    background: rgba(252, 204, 204, 0.25);
 }
 
 @keyframes blink {
     to {
-        background-color: #fccccc;
+        background-color: rgb(252, 204, 204);
         color: rgb(152, 242, 232);
     }
 }
@@ -128,4 +133,14 @@ window#waybar {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#custom-power {
+    min-width: 20px;
+    background: rgba(114, 222, 78, 0.25);
+    color: #98ff8f;
+    padding: 0.3rem 0.5rem;
+    margin: 0.3rem 0.25rem;
+    border: 1.5px solid rgba(114, 222, 78, 0.5);
+    border-radius: 12px;
 }

@@ -10,11 +10,14 @@
     ],
     "modules-center": [
         "clock",
-        "backlight/slider"
+        "backlight/slider",
+        "backlight"
     ],
     "modules-right": [
         "pulseaudio/slider",
-        "network"
+        "pulseaudio",
+        "network",
+        "custom/power"
 ],
     "backlight/slider": {
         "min": 0,
@@ -85,5 +88,11 @@
             "*": 5, // 5 workspaces by default on every monitor
             "HDMI-A-1": 3 // but only three on HDMI-A-1
         }
+    },
+
+    "custom/power": {
+        "format":"⏻",
+        "on-click": "poweroff",
+        "tooltip": false
     }
 }
