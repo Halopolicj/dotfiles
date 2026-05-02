@@ -2,7 +2,7 @@
 
 {
 	home.username = "halo";
-	home.homeDirectory = "/home/halo";
+	home.homeDirectory = "/etc/nixos/";
 	programs.bash.enabled = true;
 
 	services.flameshot = {
@@ -43,9 +43,10 @@
   };
 };
 
-
-
-
+      services.udiskie = {
+          enable = true;
+          settings = {
+      };  
 
 
 }

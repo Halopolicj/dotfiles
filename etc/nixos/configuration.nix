@@ -4,17 +4,37 @@
 
 { config, lib, pkgs, ...}:
 
+let
+  spicetify-nix = import (builtins.fetchTarball {
+    url = "https://github.com/Gerg-L/spicetify-nix/archive/master.tar.gz";
+  }) {  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      spicetify-nix.nixosModules.spicetify  
     ];
+
+  
+  programs.spicetify = {
+    enable = true;
+
+   theme = spicetify-nix.packages.themes.hazy;  
+ 
+   enabledCustomApps = with spicetify-nix.packages.apps; [
+     marketplace
+   ];    
+
+  };
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "Halopolicj"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -23,8 +43,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-
 
 
   # Set your time zone.
@@ -44,8 +62,6 @@
     LC_TELEPHONE = "pl_PL.UTF-8";
     LC_TIME = "pl_PL.UTF-8";
   };
-
-  
 
   services.getty.autologinUser = "halo";
 
@@ -139,12 +155,17 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+  services.udisks2.enable = true;
+  
+
+
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim    
     wget
     networkmanager
     libnotify
-    spotify
+    #spotify 
     git
     kdePackages.dolphin
     brightnessctl  
@@ -152,7 +173,7 @@
     hyprpaper
     wayland
     rofi
-    neofetch
+    fastfetch
     discord
     mako
     kitty
@@ -161,9 +182,11 @@
     pavucontrol
     xrandr
     steam
+    cliphist
+    hyprpolkitagent
+    udiskie
+    simplescreenrecorder
 
-    wineWowPackages.stable
-    winetricks
     protontricks
     prismlauncher 
    
@@ -171,15 +194,17 @@
     grim
     playerctl
     vscodium
-    jetbrains.idea-oss
     javaPackages.compiler.openjdk25
     nvitop
     mesa-demos
     p7zip
     killall
     openutau
+    obs-studio
+    aseprite
     font-awesome 
- ]; 
+ ];
+ 
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
