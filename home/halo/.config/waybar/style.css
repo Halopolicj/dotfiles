@@ -10,7 +10,7 @@
 }
 
 window#waybar {
-    /*border-bottom: 2px solid rgb(192, 0, 16);*/
+    border-bottom: 1px solid rgb(192, 0, 16);
     color: #8ff9ff;
     /*transition-property: background-color;
     transition-duration: 0.5s;*/
@@ -71,6 +71,11 @@ tooltip {
     padding: 0.3rem 0.5rem;
     margin: 0.3rem 0.25rem;
 }
+
+#pulseaudio {
+    margin: 0 10px;
+
+}
 #pulseaudio-slider slider {
     opacity: 0;
     background-image: none;
@@ -90,6 +95,27 @@ tooltip {
     border-radius: 5px;
     background: rgba(169, 254, 255, 0.5);
 }
+
+#pulseaudio-slider.over slider {
+    opacity: 0;
+    background-image: none;
+    box-shadow: none;
+    min-height: 0px;
+    min-width: 0px;
+}
+#pulseaudio-slider.over trough {
+    min-width: 14px;
+    min-height: 13px;
+    border-radius: 5px;
+    border: 1.5px solid rgba(255, 234, 0, 0.7);
+    background: rgba(51, 55, 55, 0.5);
+}
+#pulseaudio-slider.over highlight {
+    min-width: 1px;
+    border-radius: 3px;
+    background: rgba(255, 234, 0, 0.5);
+}
+
 
 /*backlight*/
 
@@ -117,6 +143,8 @@ tooltip {
     border-radius: 5px;
     background: rgba(252, 204, 204, 0.25);
 }
+
+
 
 @keyframes blink {
     to {

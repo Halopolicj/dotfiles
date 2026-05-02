@@ -1,7 +1,8 @@
-background-color=#64727D
+background-color = #64727d60
+text-color = #8ff9ff
 default-timeout=5000
 layer=overlay
-anchor=bottom-right
+anchor=top-right
 
-[app-name="Spotify"]
+[app-name="spotify"]
 invisible=1

@@ -2,7 +2,8 @@
     "spacing": 10,
     "layer": "bottom",
     "height": 30,
-    "margin-bottom": 6,
+
+    "margin": "6 6 4",
     "modules-left": [
         "hyprland/workspaces",
         "sway/mode",
@@ -16,6 +17,7 @@
     "modules-right": [
         "pulseaudio/slider",
         "pulseaudio",
+        "pulseaudio/slider#over",
         "network",
         "custom/power"
 ],
@@ -30,6 +32,13 @@
         "max": 100,
         "orientation": "horizontal"
         },
+    "pulseaudio/slider#over": {
+        "min": 100,
+        "max": 153,
+        "name": "over",
+        "orientation": "vertical"
+        },
+    
     "battery": {
         "format": "{capacity}% {icon}",
         "format-icons": [
