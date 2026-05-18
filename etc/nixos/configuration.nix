@@ -3,31 +3,31 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, ...}:
+#let
+  #stylix = pkgs.fetchFromGitHub {
+    #owner = "nix-community";
+    #repo = "stylix";
+    #rev = "...";
+    #sha256 = "...";
+  #};
+#in
+#let
+  #spicetify-nix = import (builtins.fetchTarball {
+    #url = "https://github.com/Gerg-L/spicetify-nix/archive/master.tar.gz";
+  #}) {  };
+#in
 
-let
-  spicetify-nix = import (builtins.fetchTarball {
-    url = "https://github.com/Gerg-L/spicetify-nix/archive/master.tar.gz";
-  }) {  };
-in
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      spicetify-nix.nixosModules.spicetify  
+      #spicetify-nix.nixosModules.spicetify  
+      ./apps.nix
+      ./default.nix
+      ./keyPkgs.nix
+      ./qolPkgs.nix
     ];
-
-  
-  programs.spicetify = {
-    enable = true;
-
-   theme = spicetify-nix.packages.themes.hazy;  
- 
-   enabledCustomApps = with spicetify-nix.packages.apps; [
-     marketplace
-   ];    
-
-  };
 
 
   # Bootloader.
@@ -156,55 +156,39 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
+  xdg.mime.defaultApplications = { 
+    "application/pdf" = "firefox.desktop";
+    "image/png" = "vlc.desktop";
+    "audio/mp3" = "vlc.desktop";
+    "video/mp4" = "vlc.desktop";
+    "inode/directory" = "org.kde.dolphin.desktop";
+  };
+
   services.udisks2.enable = true;
   
+  stylix = {
+    image = /home/halo/Wallpapers/lake2.png;
+    enable = true;
+    base16Scheme = {
+      base00 = "ffffff";
+      base01 = "ffffff";
+      base02 = "ffffff";
+      base03 = "ffffff";
+      base04 = "ffffff";
+      base05 = "ffffff";
+      base06 = "ffffff";
+      base07 = "ffffff";
+      base08 = "ffffff"; 
+      base09 = "ffffff";
+      base0A = "ffffff";
+      base0B = "ffffff";
+      base0C = "ffffff";
+      base0D = "ffffff";
+      base0E = "ffffff";
+      base0F = "ffffff";
+    };
+  };
 
-
-  environment.systemPackages = with pkgs; [
-    vim    
-    wget
-    networkmanager
-    libnotify
-    #spotify 
-    git
-    kdePackages.dolphin
-    brightnessctl  
-    hyprland
-    hyprpaper
-    wayland
-    rofi
-    fastfetch
-    discord
-    mako
-    kitty
-    bluez
-    vlc
-    pavucontrol
-    xrandr
-    steam
-    cliphist
-    hyprpolkitagent
-    udiskie
-    simplescreenrecorder
-
-    protontricks
-    prismlauncher 
-   
-    flameshot
-    grim
-    playerctl
-    vscodium
-    javaPackages.compiler.openjdk25
-    nvitop
-    mesa-demos
-    p7zip
-    killall
-    openutau
-    obs-studio
-    aseprite
-    font-awesome 
- ];
- 
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
